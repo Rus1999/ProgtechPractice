@@ -1,0 +1,15 @@
+Function GetLastDate()
+    Dim Sheet As Worksheet
+    Dim LastDate, TestDate As Date
+
+    
+    LastDate = 0
+    For Each Sheet In Worksheets
+        TestDate = CDate(Sheet.Name)
+        If TestDate > LastDate Then
+        LastDate = TestDate
+        End If
+    Next Sheet
+    GetLastDate = LastDate
+    
+End Function

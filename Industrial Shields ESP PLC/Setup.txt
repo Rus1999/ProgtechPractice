@@ -1,0 +1,16 @@
+# add additional boards manager urls
+File > Preferences > Additional boards manager URLs: http://apps.industrialshields.com/main/arduino/boards/package_industrialshields_index.json
+
+# download and install boards
+Tools > Board > Board Manager... > search: industrialshields > install industrailshields, install industrailshields-esp32
+
+# select board, model, version and programmer
+Tools > Board > industrailshieds-esp32 > ESP32 PLC Family
+	Model > ESP32 PLC 19R I/O+
+	Version > 3
+	Programmer > Esptool
+
+# change files boards.txt to fix error
+C: > Users > ... > AppData > Local > Arduino15 > packages > industrailshields > hardware > esp32 > 2.1.2 > boards.txt
+	line 73: change to esp32plc.upload.tool.serial=esptool_py
+	

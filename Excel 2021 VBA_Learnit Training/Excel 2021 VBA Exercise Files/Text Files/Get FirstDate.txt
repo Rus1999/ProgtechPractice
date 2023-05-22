@@ -1,0 +1,14 @@
+Function GetFirstDate()
+    Dim Sheet As Worksheet
+    Dim FirstDate, TestDate As Date
+
+    FirstDate = 99999
+    For Each Sheet In Worksheets
+        	TestDate = CDate(Sheet.Name)
+        If TestDate < FirstDate Then
+        FirstDate = TestDate
+        End If
+    Next Sheet
+    GetFirstDate = FirstDate
+    
+End Function

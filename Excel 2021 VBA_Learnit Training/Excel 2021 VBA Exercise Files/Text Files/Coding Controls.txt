@@ -1,0 +1,66 @@
+Private Sub cmdCancel_Click()
+
+	Unload Me
+
+End Sub
+
+Private Sub optAll_Click()
+
+	Period = "All"
+
+End Sub
+
+Private Sub optClassification_Click()
+
+	Sales = "Classification"
+
+End Sub
+
+Private Sub optModel_Click()
+
+Sales = "Model"
+
+End Sub
+
+Private Sub optMonth_Change()
+
+	If optMonth = True Then
+		cboMonth.Visible = True
+		lblMonth.Visible = True
+Else
+		cboMonth.Visible = False
+		lblMonth.Visible = False
+End If
+
+End Sub
+
+Private Sub optMonth_Click()
+
+	Period = "Month"
+
+End Sub
+
+Private Sub optOther_Change()
+
+	If optOther = True Then
+		txtStartDate.Enabled = True
+		txtEndDate.Enabled = True
+	Else
+		txtStartDate.Enabled = False
+		txtEndDate.Enabled = False
+	End If
+
+End Sub
+
+Private Sub optOther_Click()
+
+	Period = "Other"
+
+End Sub
+
+Private Sub optSalesPerson_Click()
+
+	Sales = "SalesPerson"
+
+End Sub
+

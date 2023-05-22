@@ -1,0 +1,34 @@
+Sub CreatePivot()
+
+Dim Destination, RangeData As Range
+
+Set Destination = Worksheets("Reports").Range("A1")
+Set RangeData = Range("A1", Range("I1").End(xlDown))
+
+ActiveWorkbook.PivotCaches.Create _
+    (SourceType:=xlDatabase, SourceData:=RangeData) _
+    .CreatePivotTable TableDestination:=Destination, TableName:="SalesPivot"
+
+End Sub
+
+Sub SetFields()
+
+Dim pvtTable As PivotTable
+Set pvtTable = Worksheets("Reports").PivotTables("SalesPivot")
+
+    With pvtTable
+        .PivotFields(PageName).Orientation = xlPageField
+        .PivotFields(RowName).Orientation = xlRowField
+        .PivotFields(ColumnName).Orientation = xlColumnField
+        .PivotFields(DataName).Orientation = xlDataField
+    End With
+
+ActiveWorkbook.Sheets("Reports").Activate
+
+    If frmGenerateReports.Sales <> "Model" Then
+        pvtTable.PivotSelect "", xlDataOnly
+        Selection.NumberFormat = "$#,##0"
+    End If
+Range("E1").Select
+
+End Sub

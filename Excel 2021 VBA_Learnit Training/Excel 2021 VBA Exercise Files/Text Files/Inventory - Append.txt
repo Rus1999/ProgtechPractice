@@ -1,0 +1,18 @@
+Sub InventoryAppend()
+
+    Dim LastCell As Range
+    Dim Response As Integer
+    
+    Response = MsgBox("Append the new inventory now?", vbYesNo, "Append Inventory")
+    If Response = vbYes Then
+        Set LastCell = Range("H2").End(xlDown)
+        Range("A2", LastCell).Select
+        Selection.Cut
+        Worksheets("Inventory").Select
+        Range("A1").End(xlDown).Offset(1).Select
+        ActiveSheet.Paste
+        Range("A1").Select
+        ActiveWorkbook.Save
+    End If
+    
+End Sub
